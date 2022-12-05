@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.10)
 
 option(BUILD_SAMPLES ON)
 
-set(PROJECT_NAME stack)
+set(PROJECT_NAME translator)
 project(${PROJECT_NAME})
 
 include(CTest)
