@@ -1,5 +1,5 @@
-﻿#ifndef __TDynamicMatrix_H__
-#define __TDynamicMatrix_H__
+﻿#ifndef __TDynamicQUEUE_H__
+#define __TDynamicQUEUE_H__
 
 #include<algorithm>
 #include<stdexcept>
