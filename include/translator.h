@@ -166,8 +166,8 @@
 
              double c;
 
-             long long tmp_a = long long(a);
-             long long tmp_b = long long(b);
+             long long tmp_a = (long long)(a);
+             long long tmp_b = (long long)(b);
              switch (now.value[0])
              {
              case '+':
@@ -180,7 +180,7 @@
                  c = a * b;
                  break;
              case '%':
-                 if (abs(a - tmp_a) > DBL_EPSILON || abs(b - tmp_b) > DBL_EPSILON)
+                 if (std::abs(a - tmp_a) > std::numeric_limits<double>::epsilon() || std::abs(b - tmp_b) > std::numeric_limits<double>::epsilon())
                  {
                      throw std::logic_error("invalid expression");
                  }
@@ -188,7 +188,7 @@
                  c = ((tmp_a % tmp_b) + tmp_b) % tmp_b;
                  break;
              case '/':
-                 if(abs(b - 0.0) < DBL_EPSILON)
+                 if(std::abs(b - 0.0) < std::numeric_limits<double>::epsilon())
                      throw std::logic_error("invalid expression");
                  c = a / b;
                  break;
