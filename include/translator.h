@@ -6,6 +6,7 @@
 #include "tqueue.h"
 #include "tstack.h"
 #include <string>
+#include <limits>
 
  enum Type
  {
