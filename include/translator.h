@@ -10,8 +10,8 @@
 
  enum Type
  {
-     OPEN_BRACKET,
-     CLOSE_BRACKET,
+     LEFT_BRACKET,
+     RIGHT_BRACKET,
      OPERATION,
      NUMBER,
  };
@@ -27,8 +27,8 @@
      lexema(const std::string& str)
      {
          value = str;
-         if (str[0] == '(') type = OPEN_BRACKET;
-         else if (str[0] == ')') type = CLOSE_BRACKET;
+         if (str[0] == '(') type = LEFT_BRACKET;
+         else if (str[0] == ')') type = RIGHT_BRACKET;
          else if (std::isdigit(str[0])) type = NUMBER;
          else if (isoperation(str[0])) type = OPERATION;
          else throw std::logic_error("invalid lexema");
@@ -101,13 +101,13 @@
          case Type::NUMBER:
              post.push(lex);
              break;
-         case Type::OPEN_BRACKET:
+         case Type::LEFT_BRACKET:
              stack.push(lex);
              break;
-         case Type::CLOSE_BRACKET:
+         case Type::RIGHT_BRACKET:
              lex = stack.top();
              stack.pop();
-             while (lex.type != Type::OPEN_BRACKET)
+             while (lex.type != Type::LEFT_BRACKET)
              {
                  if (stack.empty())
                      throw std::logic_error("invalid expression");

@@ -82,3 +82,18 @@ TEST(, can_solve_hard_expr)
     const double res = ( 5.5 + 8.1 ) / 3 - 5.8 * ( 1.6 - 177.55 ) + 8 - 0.0008;
     EXPECT_EQ(solve(" ( 5.5 + 8.1 ) / 3 - 5.8 * ( 1.6 - 177.55 ) + 8 - 0.0008"), res);
 }
+
+
+TEST(, cant_solve_incorrect_expr1)
+{
+    ASSERT_ANY_THROW(solve(" 5.a5 / 8.0 ()"));
+}
+
+TEST(, cant_solve_incorrect_expr2)
+{
+    ASSERT_ANY_THROW(solve(" 5.5a / 8.0 ()"));
+}
+TEST(, cant_solve_incorrect_expr3)
+{
+    ASSERT_ANY_THROW(solve(" a / 8.0 ()"));
+}
