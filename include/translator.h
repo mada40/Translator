@@ -29,7 +29,7 @@
          value = str;
          if (str[0] == '(') type = LEFT_BRACKET;
          else if (str[0] == ')') type = RIGHT_BRACKET;
-         else if (std::isdigit(str[0])) type = NUMBER;
+         else if (std::isdigit(str[0]) || str.size() >= 2 && str[0] == '-' && std::isdigit(str[1])) type = NUMBER;
          else if (isoperation(str[0])) type = OPERATION;
          else throw std::logic_error("invalid lexema");
      }
