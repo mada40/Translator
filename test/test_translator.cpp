@@ -1,6 +1,11 @@
 #include "translator.h"
 #include <gtest.h>
 #include <iostream>
+TEST(, can_solve_negative_number)
+{
+    const double res = -5.25 * -10.3;
+    EXPECT_DOUBLE_EQ(solve(" -5.25 * -10.3 "), res);
+}
 TEST(, cant_solve_empty_expr)
 {
     ASSERT_ANY_THROW(solve(" "));
@@ -82,6 +87,9 @@ TEST(, can_solve_hard_expr)
     const double res = ( 5.5 + 8.1 ) / 3 - 5.8 * ( 1.6 - 177.55 ) + 8 - 0.0008;
     EXPECT_EQ(solve(" ( 5.5 + 8.1 ) / 3 - 5.8 * ( 1.6 - 177.55 ) + 8 - 0.0008"), res);
 }
+
+
+
 
 
 TEST(, cant_solve_incorrect_expr1)
