@@ -133,7 +133,7 @@
              switch (lex.type)
              {
              case Type::FUNC:
-                 post.push(lexema("0"));
+                 post.push(lexema("0")); // dummy variable before the function
              case Type::OPERATION:
                  while (!stack.empty() && stack.top().priority() >= lex.priority())
                  {
@@ -248,7 +248,6 @@
              {
                  if (out.size() <= 1)
                      throw std::logic_error("invalid expression");
-
 
                  double b = out.top();
                  out.pop();
