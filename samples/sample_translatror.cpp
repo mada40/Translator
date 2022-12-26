@@ -1,7 +1,7 @@
 ﻿#include <iostream>
 #include "translator.h"
 #include <string>
-void main()
+int main()
 {
 	while (true)
 	{
@@ -27,5 +27,5 @@ void main()
 		std::cin.ignore();
 	}
 
-
+	return 0;
 }
