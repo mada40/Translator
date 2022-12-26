@@ -1,6 +1,7 @@
 #include "translator.h"
 #include <gtest.h>
 #include <iostream>
+#include <cmath>
 
 TEST(, can_solve_negative_number)
 {
