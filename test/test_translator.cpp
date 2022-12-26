@@ -78,24 +78,6 @@ TEST(, sum)
     EXPECT_EQ(55, tr.solve());
 }
 
-TEST(, cant_solve_expr_with_incorrect_opened_brackets)
-{
-    Translator tr("( 5.25 / 8.0 ");
-    ASSERT_ANY_THROW(tr.solve());
-}
-
-TEST(, cant_solve_expr_with_incorrect_closed_brackets)
-{
-    Translator tr(" 5.25 / 8.0 )");
-    ASSERT_ANY_THROW(tr.solve());
-}
-
-TEST(, cant_solve_expr_with_incorrect_brackets)
-{
-    Translator tr(" 5.25 / 8.0 ()");
-    ASSERT_ANY_THROW(tr.solve());
-}
-
 TEST(, can_solve_hard_expr)
 {
     const double res = ( 5.5 + 8.1 ) / 3 - 5.8 * ( 1.6 - 177.55 ) + 8 - 0.0008;
@@ -104,22 +86,6 @@ TEST(, can_solve_hard_expr)
 }
 
 
-TEST(, cant_solve_incorrect_expr1)
-{
-    Translator tr(" 5.a5 / 8.0 ()");
-    ASSERT_ANY_THROW(tr.solve());
-}
-
-TEST(, cant_solve_incorrect_expr2)
-{
-    Translator tr(" 5.5a / 8.0 ()");
-    ASSERT_ANY_THROW(tr.solve());
-}
-TEST(, cant_solve_incorrect_expr3)
-{
-    Translator tr(" a / 8.0 ()");
-    ASSERT_ANY_THROW(tr.solve());
-}
 
 TEST(, can_solve_expr_with_e1)
 {
@@ -182,6 +148,15 @@ TEST(, can_solve_expr_with_sin_and_sin)
 {
     const double res = 1.0;
     Translator tr(" cos ( PI ) * cos ( Pi ) + sin ( iP ) + sin ( iP )");
+
+    auto res_tr = tr.solve();
+    EXPECT_EQ(res_tr, res);
+}
+
+TEST(, can_solve_expr_with_sin1)
+{
+    const double res = std::sin(50);
+    Translator tr(" sin ( 50 ) ");
 
     auto res_tr = tr.solve();
     EXPECT_EQ(res_tr, res);
