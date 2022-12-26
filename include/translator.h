@@ -9,6 +9,7 @@
 #include <limits>
 #include <iostream>
 #include <map>
+#include <cmath>
 
  enum Type
  {
